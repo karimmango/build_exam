@@ -1,8 +1,5 @@
 pipeline {
-    agent any
-    tools {
-       ruby 'ruby-2.0.0p648'
-    }
+    agent { docker { image 'ruby:2.6.1' } }
     stages {
         stage('install requirements') {
             steps {
@@ -19,10 +16,6 @@ pipeline {
                 
             }
         }
-        
-        
-            
-        }
         stage('Copy artifact') {
             steps {
               copyArtifacts filter: 'main.rb', fingerprintArtifacts: true
@@ -37,3 +30,4 @@ pipeline {
           }
         }
     }
+}
