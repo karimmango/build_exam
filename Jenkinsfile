@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deliver to cloud') {
             when {
-                expression { params.choices == 'cloud'}
+                expression { params.DEPLOY_TO == 'cloud'}
             }
             steps {
               sshagent(['cloud']) {
@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Deliver to QA') {
             when {
-                expression { params.choices == 'qa'}
+                expression { params.DEPLOY_TO == 'qa'}
             }
             steps {
               sshagent(['vagrant-private-key']) {
