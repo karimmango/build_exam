@@ -5,9 +5,8 @@ After=network.target
 [Service]
 Type=simple
 User=vagrant
-ExecStart=/usr/bin/ruby /home/vagrant/main.rb
 WorkingDirectory=/home/vagrant
-Restart=always
+ExecStart=/usr/bin/ruby /home/vagrant/main.rb
 PIDFile=/var/run/main.rb
 
 [Install]
