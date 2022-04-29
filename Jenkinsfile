@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+    choice choices: ['qa', 'cloud'], description: 'Select environment for deployment', name: 'DEPLOY_TO'
+  }
     stages {
         stage('install requirements') {
             steps {
@@ -25,7 +28,7 @@ pipeline {
         stage('Deliver') {
             steps {
               sshagent(['cloud']) {
-                sh 'ANSIBLE_HOST_KEY_CHECKING=False /usr/bin/ansible-playbook -i cloud.ini playbook.yml'
+                sh 'ANSIBLE_HOST_KEY_CHECKING=False /usr/bin/ansible-playbook -i ${DEPLOY_TO}.ini playbook.yml'
              }
  
           }
