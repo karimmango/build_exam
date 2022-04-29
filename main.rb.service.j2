@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/home/vagrant
-ExecStart=/usr/bin/ruby /home/vagrant/main.rb
+ExecStart=/usr/bundler exec ruby /home/vagrant/main.rb
 PIDFile=/var/run/main.rb
 
 [Install]
