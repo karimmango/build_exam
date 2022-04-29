@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'ruby:2.6.1' } }
+    agent any
     stages {
         stage('install requirements') {
             steps {
