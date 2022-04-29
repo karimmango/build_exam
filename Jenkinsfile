@@ -23,17 +23,18 @@ pipeline {
         
             
         }
-        stage('Run production deployment') {
-          when {
-            branch 'main'
+        stage('Copy artifact') {
+            steps {
+              copyArtifacts filter: 'main.rb', fingerprintArtifacts: true
+            }
+        }
+        stage('Deliver') {
+            steps {
+              sshagent(['cloud']) {
+                sh 'ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i cloud.ini playbook.yml'
+             }
+ 
           }
-
-          steps {
-            build job: 'build_exam', parameters: [string(name: 'DEPLOY_TO', value: 'cloud')]
-          }
-    
-        
-
         }
     }
 }
