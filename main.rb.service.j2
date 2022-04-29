@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=vagrant
-ExecStart=ruby /home/vagrant/main.rb
+ExecStart=/usr/bin/ruby /home/vagrant/main.rb
 WorkingDirectory=/home/vagrant
 Restart=always
 PIDFile=/var/run/main.rb
