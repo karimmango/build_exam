@@ -31,7 +31,7 @@ pipeline {
             }
             steps {
               sshagent(['cloud']) {
-                sh 'ANSIBLE_HOST_KEY_CHECKING=False /usr/bin/ansible-playbook -i ${DEPLOY_TO}.ini playbook.yml'
+                sh 'ANSIBLE_HOST_KEY_CHECKING=False /usr/bin/ansible-playbook -i ${DEPLOY_TO}.ini cloudplaybook.yml'
              }
  
           }
