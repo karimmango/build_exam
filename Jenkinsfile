@@ -18,7 +18,8 @@ pipeline {
         }
         stage('Copy artifact') {
             steps {
-              copyArtifacts filter: 'main.rb', fingerprintArtifacts: true
+              copyArtifacts filter: 'main.rb', fingerprintArtifacts: true,
+                projectName: "build_exam", selector: lastSuccessful()
             }
         }
         stage('Deliver') {
