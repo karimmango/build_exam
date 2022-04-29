@@ -1,0 +1,14 @@
+[Unit]
+Description=Simple service with API written in ruby
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/vagrant
+ExecStart=/usr/bundler exec ruby /home/vagrant/main.rb
+PIDFile=/var/run/main.rb
+
+[Install]
+WantedBy=default.target
+
