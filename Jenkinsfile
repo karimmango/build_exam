@@ -25,9 +25,23 @@ pipeline {
                 projectName: "build_exam", selector: lastSuccessful()
             }
         }
-        stage('Deliver') {
+        stage('Deliver to cloud') {
+            when {
+                expression { params.choices == 'cloud'}
+            }
             steps {
               sshagent(['cloud']) {
+                sh 'ANSIBLE_HOST_KEY_CHECKING=False /usr/bin/ansible-playbook -i ${DEPLOY_TO}.ini playbook.yml'
+             }
+ 
+          }
+        }
+        stage('Deliver to QA') {
+            when {
+                expression { params.choices == 'qa'}
+            }
+            steps {
+              sshagent(['vagrant-private-key']) {
                 sh 'ANSIBLE_HOST_KEY_CHECKING=False /usr/bin/ansible-playbook -i ${DEPLOY_TO}.ini playbook.yml'
              }
  
