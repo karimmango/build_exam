@@ -5,10 +5,10 @@ After=network.target
 [Service]
 Type=simple
 User=vagrant
-WorkingDirectory=/home/vagrant
 ExecStart=/usr/bin/ruby /home/vagrant/main.rb
+WorkingDirectory=/home/vagrant
+Restart=always
 PIDFile=/var/run/main.rb
 
 [Install]
 WantedBy=default.target
-
