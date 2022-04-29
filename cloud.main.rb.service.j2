@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=ec2-user
 WorkingDirectory=/home/vagrant
-ExecStart=/usr/bundler exec ruby /home/vagrant/main.rb
+ExecStart=/usr/bin/ruby /home/vagrant/main.rb
 PIDFile=/var/run/main.rb
 
 [Install]
