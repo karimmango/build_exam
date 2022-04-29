@@ -12,9 +12,9 @@
         src: main.rb.service.j2
         dest: /etc/systemd/system/main.rb.service
 
-    - name: run main service
+    - name: run sample service
       become: true
-      ansible.builtin.shell: /home/vagrant/main.rb
-      args:
-        executable: ruby
+      ansible.builtin.systemd:
+        state: started
+        name: main.rb
 
