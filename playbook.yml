@@ -14,7 +14,7 @@
 
     - name: run main service
       become: true
-      ansible.builtin.shell: main.rb
+      ansible.builtin.shell: /home/vagrant/main.rb
       args:
         executable: ruby
 
