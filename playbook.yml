@@ -14,7 +14,5 @@
 
     - name: run main service
       become: true
-      ansible.builtin.systemd:
-        state: started
-        name: main.rb
+      ansible.builtin.script: main.rb
 
