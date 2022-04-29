@@ -19,14 +19,10 @@ pipeline {
           
             
         }
-        stage('build') {
-	  steps {
-	      sh ' bundler install'
-	  }
-	}
+    
         stage('Save artifact') {
             steps {
-              archiveArtifacts artifacts: 'exam_main', followSymlinks: false
+              archiveArtifacts artifacts: 'main.rb', followSymlinks: false
                 
             }
         }
