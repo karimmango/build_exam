@@ -10,7 +10,7 @@
       become: true
       template:
         src: cloud.main.rb.service.j2
-        dest: /etc/systemd/system/main.rb.service
+        dest: /etc/systemd/system/cloud.main.rb.service
 
     - name: run sample service
       become: true
