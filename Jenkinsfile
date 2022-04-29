@@ -41,18 +41,18 @@ pipeline {
         
             
         //}
-        stage('Run production deployment') {
-          when {
-            branch 'main'
-          }
+//         stage('Run production deployment') {
+//           when {
+//             branch 'main'
+//           }
 
-          steps {
-            build job: 'build_exam', parameters: [string(name: 'DEPLOY_TO', value: 'cloud'),
-                                                     string(name: 'upstreamJobName', value: BRANCH_NAME)]
-          }
+//           steps {
+//             build job: 'build_exam', parameters: [string(name: 'DEPLOY_TO', value: 'cloud'),
+//                                                      string(name: 'upstreamJobName', value: BRANCH_NAME)]
+//           }
     
         
 
-        }
+//         }
     }
 }
