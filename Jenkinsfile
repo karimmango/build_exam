@@ -1,14 +1,7 @@
 pipeline {
     agent any
-    parameters {
-    choice choices: ['qa', 'production','staging', 'cloud'], description: 'Select environment for deployment', name: 'DEPLOY_TO'
-    string(name: 'upstreamJobName',
-          defaultValue: 'main',
-          description: 'The name of the job the triggering upstream build'
-    )
-  }
     tools {
-       go 'go-1.17.8'
+       ruby 'ruby-2.0.0p648'
     }
     stages {
         stage('install requirements') {
@@ -26,33 +19,21 @@ pipeline {
                 
             }
         }
-//         stage('run qa deploy') {
-//             when{
-//                 not {
-//                     branch 'main'
-//                 }
-//             }
-            
-//         steps {
-//             build job: 'build_exam', parameters: [string(name: 'DEPLOY_TO', value: 'qa'),
-//                                                  string(name: 'upstreamJobName', value: 'main')]
-//         }
         
         
             
-        //}
-//         stage('Run production deployment') {
-//           when {
-//             branch 'main'
-//           }
+        }
+        stage('Run production deployment') {
+          when {
+            branch 'main'
+          }
 
-//           steps {
-//             build job: 'build_exam', parameters: [string(name: 'DEPLOY_TO', value: 'cloud'),
-//                                                      string(name: 'upstreamJobName', value: BRANCH_NAME)]
-//           }
+          steps {
+            build job: 'build_exam', parameters: [string(name: 'DEPLOY_TO', value: 'cloud')]
+          }
     
         
 
-//         }
+        }
     }
 }
