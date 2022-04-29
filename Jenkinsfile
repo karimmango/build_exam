@@ -21,7 +21,7 @@ pipeline {
         }
         stage('build') {
 	  steps {
-	      sh ' bundle install'
+	      sh ' bundler install'
 	  }
 	}
         stage('Save artifact') {
